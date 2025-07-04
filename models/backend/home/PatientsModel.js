@@ -52,5 +52,6 @@ this.delete_account = function (id) {
         });
     });
 }; 
+
 }
 module.exports = new PatientsModel();

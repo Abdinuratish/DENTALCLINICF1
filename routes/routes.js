@@ -20,7 +20,7 @@ const AuthController = require('../controllers/backend/home/AuthController');
 
 var prescriptionsController = require('../controllers/backend/home/PrescriptionsController.js');
 const userController = require('../controllers/backend/home/UserController.js');
-  
+const paymentController = require('../controllers/backend/home/PaymentController');
 
 
 module.exports = function(app) { 
@@ -150,6 +150,9 @@ app.get('/users/delete/:id', userController.deleteUser);
             
 
 
+app.get('/payments', paymentController.listPayments);
+app.get('/payments/add', paymentController.showAddPayment);
+app.post('/payments/add', paymentController.addPayment);
 
    
 
