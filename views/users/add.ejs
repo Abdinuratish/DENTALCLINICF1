@@ -1,35 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Add User</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    form { max-width: 400px; margin: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; }
-    label { display: block; margin-bottom: 10px; }
-    input { width: 100%; padding: 8px; margin-top: 4px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px; }
-    button { background: #007bff; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #0056b3; }
-    .error { color: #dc3545; margin-bottom: 10px; }
-    a { display: inline-block; margin-top: 10px; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 450px;
+      width: 100%;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    form input,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      appearance: none;
+      background-color: #fff;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: #dc3545;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 15px;
+      text-align: center;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <h1>Add User</h1>
-  <% if (error) { %>
-    <div class="error"><%= error %></div>
-  <% } %>
-  <form method="post" action="/users/add">
-    <label>Username:
-      <input name="username" required>
-    </label>
-    <label>Password:
-      <input name="password" type="password" required>
-    </label>
-    <label>Role:
-      <input name="role" required>
-    </label>
-    <button type="submit">Add</button>
-  </form>
-  <a href="/users">Back to list</a>
+  <div class="container">
+    <h1>Add User</h1>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form method="post" action="/users/add">
+      <label for="username">Username:</label>
+      <input id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input id="password" name="password" type="password" required>
+
+      <label for="role">Role:</label>
+      <select id="role" name="role" required>
+        <option value="">Select role</option>
+        <option value="admin">Admin</option>
+        <option value="doctor">Doctor</option>
+        <option value="receptionist">Receptionist</option>
+        <!-- <option value="nurse">Nurse</option> -->
+      </select>
+
+      <button type="submit">Add User</button>
+    </form>
+
+    <!-- <a class="back-link" href="/users">← Back to user list</a> -->
+  </div>
 </body>
 </html>

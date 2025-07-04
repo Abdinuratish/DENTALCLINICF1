@@ -38,11 +38,12 @@ function isAuthenticated(req, res, next) {
     res.redirect('/login');
   }
 
-  // Auth routes (do NOT protect these)
-  app.get('/login', AuthController.showLogin);
+    app.get('/login', AuthController.showLogin);
   app.post('/login', AuthController.login);
   app.get('/logout', AuthController.logout);
-
+  app.get('/forgot-password', (req, res) => {
+  res.render('auth/forgot-password'); // Create this EJS page
+});
   // Protected Home Route
   app.get('/', isAuthenticated, (req, res) => {
     HomeController.index(req, res);

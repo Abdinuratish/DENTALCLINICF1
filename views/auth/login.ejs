@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Login | Dental Clinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,13 +21,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .login-container {
       display: flex;
+      flex-direction: row;
       width: 800px;
-      max-width: 95%;
+      max-width: 100%;
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -32,6 +39,7 @@
     .login-left {
       flex: 1;
       background-color: #e0f7fa;
+      display: none;
     }
 
     .login-left img {
@@ -42,7 +50,7 @@
 
     .login-right {
       flex: 1;
-      padding: 40px;
+      padding: 40px 30px;
     }
 
     .login-right h2 {
@@ -68,13 +76,14 @@
       color: #333;
     }
 
-    .form-group input, .form-group select {
+    .form-group input,
+    .form-group select {
       width: 100%;
       padding: 10px 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      outline: none;
       font-size: 16px;
+      outline: none;
     }
 
     .btn-login {
@@ -87,10 +96,23 @@
       cursor: pointer;
       width: 100%;
       transition: background-color 0.3s ease;
+      margin-bottom: 10px;
     }
 
     .btn-login:hover {
       background-color: #0056b3;
+    }
+
+    .forgot-link {
+      display: inline-block;
+      font-size: 14px;
+      color: #007bff;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
     }
 
     .error {
@@ -99,14 +121,13 @@
       font-size: 14px;
       text-align: center;
     }
+
+    @media (min-width: 768px) {
+      .login-left {
+        display: block;
+      }
+    }
   </style>
-</head>
-  <title>Login | Dental Clinic</title>
-
-
-
-  <link rel="stylesheet" href="/css/login.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="login-container">
@@ -126,21 +147,19 @@
           <label for="password">Password</label>
           <input type="password" name="password" id="password" required placeholder="Enter your password">
         </div>
+
         <div class="form-group">
           <label for="role">Role</label>
           <select name="role" id="role" required>
             <option value="">-- Select Role --</option>
             <option value="admin">Admin</option>
-            <option value="user">reception</option>
-            <option value="company">Doctor</option>
+            <option value="receptionist">Receptionist</option>
+            <option value="doctor">Doctor</option>
           </select>
         </div>
-        
 
         <button type="submit" class="btn-login">Login</button>
-        <!-- <p>Don't have an account? <a href="/register">Register here</a></p> -->
-        <a href="/forgot-password">Forget Password</a>
-        
+        <a href="/forgot-password" class="forgot-link"> Forgot Password?</a>
 
         <% if (error) { %>
           <p class="error"><%= error %></p>
