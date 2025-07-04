@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit User</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    form { max-width: 400px; margin: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; }
+    label { display: block; margin-bottom: 10px; }
+    input { width: 100%; padding: 8px; margin-top: 4px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #007bff; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .error { color: #dc3545; margin-bottom: 10px; }
+    a { display: inline-block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Edit User</h1>
+  <% if (error) { %>
+    <div class="error"><%= error %></div>
+  <% } %>
+  <form method="post" action="/users/edit/<%= user.id %>">
+    <label>Username:
+      <input name="username" value="<%= user.username %>" required>
+    </label>
+    <label>Role:
+      <input name="role" value="<%= user.role %>" required>
+    </label>
+    <button type="submit">Save</button>
+  </form>
+  <a href="/users">Back to list</a>
+</body>
+</html>

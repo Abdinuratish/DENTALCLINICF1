@@ -5,6 +5,6 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'dentalclinic'
+  database : 'dentalclinic1'
 });
 module.exports = connection;

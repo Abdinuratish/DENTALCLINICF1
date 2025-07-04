@@ -19,7 +19,7 @@ var invoicesController= require('../controllers/backend/home/InvoicesController.
 const AuthController = require('../controllers/backend/home/AuthController');
 
 var prescriptionsController = require('../controllers/backend/home/PrescriptionsController.js');
-
+const userController = require('../controllers/backend/home/UserController.js');
  
 module.exports = function(app) { 
 
@@ -137,8 +137,14 @@ function isAuthenticated(req, res, next) {
 
 
 
+app.get('/users', userController.listUsers);
+app.get('/users/add', userController.showAddUser);
+app.post('/users/add', userController.addUser);
+app.get('/users/edit/:id', userController.showEditUser);
+app.post('/users/edit/:id', userController.editUser);
+app.get('/users/delete/:id', userController.deleteUser);
 
-
+            
 
 
 

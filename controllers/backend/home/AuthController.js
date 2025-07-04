@@ -25,3 +25,6 @@ exports.logout = (req, res) => {
   req.session.destroy();
   res.redirect('/login');
 };
+exports.showRegister = (req, res) => {
+  res.render('auth/register', { error: null });
+}
