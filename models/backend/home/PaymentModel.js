@@ -19,19 +19,6 @@ function PaymentModel() {
     });
   };
 }
-this.getMonthlyTotal = function() {
-  return new Promise((resolve, reject) => {
-    const query = `
-      SELECT SUM(amount) AS total
-      FROM payments
-      WHERE MONTH(date) = MONTH(CURRENT_DATE())
-        AND YEAR(date) = YEAR(CURRENT_DATE())
-    `;
-    connection.query(query, (err, rows) => {
-      if (err) reject(err);
-      else resolve(rows[0].total || 0);
-    });
-  });
-};
+
 
 module.exports = new PaymentModel();

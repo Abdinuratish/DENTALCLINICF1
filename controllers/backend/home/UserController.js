@@ -1,3 +1,7 @@
+
+// const bcrypt = require('bcrypt'); // Add this at the top
+// const saltRounds = 10; 
+
 const userModel = require('../../../models/backend/home/UserModel');
 
 exports.listUsers = (req, res) => {
