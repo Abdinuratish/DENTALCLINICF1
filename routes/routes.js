@@ -5,6 +5,7 @@ app.get || app.post || app.put || app.delete || app.all
 More: http://expressjs.com/en/guide/routing.html
 
  */
+const auth = require('../middlewares/auth');
 
 const GuestController = require('../controllers/backend/home/GuestController.js');
 var HomeController = require('../controllers/backend/home/HomeController.js');
@@ -241,6 +242,8 @@ app.post('/payments/add', paymentController.addPayment);
 
     app.route('/viewInvoices').get(function (req, res) {
       invoicesController.getInvoices(req, res);
+      app.get('/invoices/add', invoicesController.showAddInvoice);
+app.post('/invoices/add', invoicesController.addInvoice);
     });
 
   };
